@@ -455,6 +455,7 @@ class COCOeval:
                 mean_s = np.mean(s[s>-1])
             print(iStr.format(titleStr, typeStr, iouStr, areaRng, maxDets, mean_s))
             return mean_s
+
         def _summarizeDets():
             # stats = np.zeros((12,))
             stats = np.zeros((3,))
@@ -462,6 +463,9 @@ class COCOeval:
             stats[0] = _summarize(1, iouThr=.25, maxDets=self.params.maxDets[2])
             stats[1] = _summarize(1, iouThr=.5, maxDets=self.params.maxDets[2])
             stats[2] = _summarize(1, iouThr=.75, maxDets=self.params.maxDets[2])
+
+            # stats[1] = _summarize(1, iouThr=.5, maxDets=self.params.maxDets[2])
+            # stats[2] = _summarize(1, iouThr=.75, maxDets=self.params.maxDets[2])
             # stats[3] = _summarize(1, areaRng='small', maxDets=self.params.maxDets[2])
             # stats[4] = _summarize(1, areaRng='medium', maxDets=self.params.maxDets[2])
             # stats[5] = _summarize(1, areaRng='large', maxDets=self.params.maxDets[2])
@@ -512,7 +516,7 @@ class Params:
 
         # array([0.25, 0.5, 0.75])
         self.iouThrs = np.linspace(.25, 0.75, int(np.round((0.75 - .25) / .25)) + 1, endpoint=True)
-        self.maxDets = [100]
+        self.maxDets = [1, 10, 100]  # [100]
         self.areaRng = [[0 ** 2, 1e5 ** 2],]
         self.areaRngLbl = ['all', ]
 
