@@ -460,8 +460,8 @@ class COCOeval:
             # stats = np.zeros((12,))
             stats = np.zeros((3,))
             # stats[0] = _summarize(1)
-            stats[1] = _summarize(1, iouThr=.5, maxDets=self.params.maxDets[2])
-            stats[0] = _summarize(1, iouThr=.25, maxDets=self.params.maxDets[2])
+            stats[0] = _summarize(1, iouThr=.5, maxDets=self.params.maxDets[2])
+            stats[1] = _summarize(1, iouThr=.25, maxDets=self.params.maxDets[2])
             stats[2] = _summarize(1, iouThr=.75, maxDets=self.params.maxDets[2])
 
             # stats[1] = _summarize(1, iouThr=.5, maxDets=self.params.maxDets[2])
